@@ -1,0 +1,79 @@
+name: "Narrativas Imortais — Gerador de Vídeos Faceless de Literatura"
+code: narrativas-imortais
+description: >
+  Produz vídeos faceless educativos para o canal Narrativas Imortais.
+  Para cada episódio: roteiro completo adaptado de um clássico da literatura ou filosofia,
+  divisão em cenas, narração TTS em PT-BR por cena, imagem cinematográfica 16:9 por cena
+  e mixagem com fogueira suave ao fundo.
+icon: 📚
+version: "1.0.0"
+performance_mode: economico
+language: pt-BR
+company: Narrativas Imortais
+created: "2026-04-14"
+
+agents:
+  - id: edgar
+    name: "Edgar"
+    icon: 🖋️
+    role: "Roteirista — adapta o livro/obra em roteiro educativo cinematográfico em PT-BR"
+    path: ./agents/edgar.agent.md
+
+  - id: virgilio
+    name: "Virgílio"
+    icon: 📖
+    role: "Diretor de Cenas — divide o roteiro em cenas com prompts visuais e narração"
+    path: ./agents/virgilio.agent.md
+
+  - id: eco
+    name: "Eco"
+    icon: 🎙️
+    role: "Narradora — gera áudio TTS PT-BR para cada cena via ElevenLabs"
+    path: ./agents/eco.agent.md
+
+  - id: gustave
+    name: "Gustave"
+    icon: 🎨
+    role: "Ilustrador — gera imagens cinematográficas 16:9 para cada cena"
+    path: ./agents/gustave.agent.md
+
+  - id: hestia
+    name: "Héstia"
+    icon: 🔥
+    role: "Sonoplasta — gera fogueira suave e mixa com as narrações via ffmpeg"
+    path: ./agents/hestia.agent.md
+
+pipeline:
+  entry: ./pipeline/pipeline.yaml
+
+skills:
+  - web_search
+
+local_tools:
+  tts:
+    engine: piper
+    venv: "~/.venvs/piper"
+    voices_dir: "~/piper-voices"
+    default_voice: "pt_BR-faber-medium"
+    language: pt-BR
+  image_generation:
+    engine: manual
+    note: "Gustave gera prompts. Usuário gera imagens com Midjourney, Leonardo.ai ou similar."
+    output_dir: "output/{run_id}/imagens/"
+    prompts_file: "output/{run_id}/prompts-imagens.md"
+  audio_mixing:
+    engine: ffmpeg
+    path: "/opt/homebrew/bin/ffmpeg"
+  setup_guide: "pipeline/data/setup-local.md"
+
+data:
+  - pipeline/data/canal-identity.md
+  - pipeline/data/roteiro-framework.md
+  - pipeline/data/visual-style.md
+
+investigation:
+  enriched: false
+  profiles_analyzed: 0
+  date: "2026-04-14"
+  note: "Squad criado para canal faceless educativo sobre literatura clássica e filosofia"
+  dir: squads/narrativas-imortais/_investigations

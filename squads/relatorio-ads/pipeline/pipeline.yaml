@@ -1,0 +1,31 @@
+name: "Pipeline de Relatório de Ads"
+squad: relatorio-ads
+version: "1.0.0"
+
+checkpoints:
+  - step-01-configuracao
+  - step-02-periodo-contas
+
+on_reject:
+  step-05-revisar-entregar: step-04-analisar
+
+steps:
+  - id: step-01-configuracao
+    file: ./steps/step-01-configuracao.md
+    description: "Checkpoint: Verificação e setup das credenciais de API (Google Ads + Meta Ads)"
+
+  - id: step-02-periodo-contas
+    file: ./steps/step-02-periodo-contas.md
+    description: "Checkpoint: Define período do relatório e contas a analisar"
+
+  - id: step-03-coletar-dados
+    file: ./steps/step-03-coletar-dados.md
+    description: "Fábio Fetcher coleta dados via API do Google Ads e Meta Ads"
+
+  - id: step-04-analisar
+    file: ./steps/step-04-analisar.md
+    description: "André Análise gera o relatório completo com benchmarks, insights e recomendações"
+
+  - id: step-05-revisar-entregar
+    file: ./steps/step-05-revisar-entregar.md
+    description: "Beatriz Benchmark revisa e entrega o relatório final ao cliente"

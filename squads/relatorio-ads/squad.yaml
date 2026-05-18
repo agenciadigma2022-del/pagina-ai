@@ -1,0 +1,42 @@
+name: "Squad de Relatório de Ads — ATRAE"
+code: relatorio-ads
+description: "Coleta automática de dados via API (Google Ads + Meta Ads) e geração de relatório de performance para clientes da ATRAE"
+icon: 📊
+version: "1.0.0"
+performance_mode: economico
+language: pt-BR
+company: ATRAE
+created: "2026-03-23"
+
+agents:
+  - id: fabio-fetcher
+    name: "Fábio Fetcher"
+    icon: 🔌
+    role: "Coletor de dados via Google Ads API e Meta Ads API"
+    path: ./agents/fabio-fetcher.agent.md
+
+  - id: andre-analise
+    name: "André Análise"
+    icon: 📊
+    role: "Analista de performance de campanhas pagas"
+    path: ./agents/andre-analise.agent.md
+
+  - id: beatriz-benchmark
+    name: "Beatriz Benchmark"
+    icon: ✅
+    role: "Revisora de qualidade e formatação do relatório"
+    path: ./agents/beatriz-benchmark.agent.md
+
+pipeline:
+  entry: ./pipeline/pipeline.yaml
+
+skills:
+  - web_search
+  - web_fetch
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md

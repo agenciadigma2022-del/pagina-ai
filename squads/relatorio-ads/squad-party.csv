@@ -1,0 +1,4 @@
+id,name,icon,role,execution,path
+fabio-fetcher,Fábio Fetcher,🔌,Coletor de dados via Google Ads API e Meta Ads API,inline,./agents/fabio-fetcher.agent.md
+andre-analise,André Análise,📊,Analista de performance de campanhas pagas,inline,./agents/andre-analise.agent.md
+beatriz-benchmark,Beatriz Benchmark,✅,Revisora de qualidade e formatação do relatório,inline,./agents/beatriz-benchmark.agent.md

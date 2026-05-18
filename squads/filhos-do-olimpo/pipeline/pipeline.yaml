@@ -1,0 +1,50 @@
+name: "Pipeline — Filhos do Olimpo"
+squad: filhos-do-olimpo
+version: "1.0.0"
+
+checkpoints:
+  - step-01-escolher-personagem
+  - step-03-aprovar-roteiro
+  - step-07-aprovar-cenas-e-audio
+  - step-09-aprovar-imagens
+
+steps:
+  - id: step-01-escolher-personagem
+    file: ./steps/step-01-escolher-personagem.md
+    description: "Checkpoint: Define o personagem e ângulo narrativo do episódio"
+
+  - id: step-02-roteirizar
+    file: ./steps/step-02-roteirizar.md
+    description: "Lísia escreve o roteiro completo seguindo o Arco de 4 Partes"
+
+  - id: step-03-aprovar-roteiro
+    file: ./steps/step-03-aprovar-roteiro.md
+    description: "Checkpoint: Usuário revisa e aprova o roteiro"
+
+  - id: step-04-dividir-cenas
+    file: ./steps/step-04-dividir-cenas.md
+    description: "Cláudio divide o roteiro em cenas com narração e prompt visual"
+
+  - id: step-05-gerar-narracoes
+    file: ./steps/step-05-gerar-narracoes.md
+    description: "Orfeu gera o áudio TTS de narração para cada cena via ElevenLabs"
+
+  - id: step-06-gerar-imagens-teste
+    file: ./steps/step-06-gerar-imagens-teste.md
+    description: "Apolo gera imagens em modo test para cada cena"
+
+  - id: step-07-aprovar-cenas-e-audio
+    file: ./steps/step-07-aprovar-cenas-e-audio.md
+    description: "Checkpoint: Usuário revisa narrações e imagens, aprova ou solicita ajustes"
+
+  - id: step-08-gerar-imagens-producao
+    file: ./steps/step-08-gerar-imagens-producao.md
+    description: "Apolo regera as imagens aprovadas em modo production (alta qualidade)"
+
+  - id: step-09-aprovar-imagens
+    file: ./steps/step-09-aprovar-imagens.md
+    description: "Checkpoint: Aprovação final das imagens de produção"
+
+  - id: step-10-mixar-fogueira
+    file: ./steps/step-10-mixar-fogueira.md
+    description: "Hades gera o som de fogueira e mixa com as narrações de cada cena"

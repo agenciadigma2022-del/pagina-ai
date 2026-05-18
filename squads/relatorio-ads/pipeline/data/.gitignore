@@ -1,0 +1,10 @@
+# Credenciais — nunca commitar
+.env
+
+# Scripts Python gerados automaticamente
+fetch_google_ads.py
+fetch_meta_ads.py
+
+# Dados brutos (gerados em execução)
+setup-status.md
+report-config.md

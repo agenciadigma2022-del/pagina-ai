@@ -1,0 +1,63 @@
+name: "Squad de Conteúdo Instagram — ATRAE"
+code: conteudo-instagram
+description: "Pesquisa pautas de marketing digital, gera ângulos e cria carrosséis educativos para Instagram Feed, posicionando a ATRAE como referência em tráfego pago para PMEs"
+icon: 📸
+version: "1.0.0"
+performance_mode: economico
+language: pt-BR
+company: ATRAE
+created: "2026-03-23"
+
+agents:
+  - id: natan-noticias
+    name: "Natan Notícias"
+    icon: 🔍
+    role: "Pesquisador de pautas e tendências de marketing digital"
+    path: ./agents/natan-noticias.agent.md
+
+  - id: carlos-carrossel
+    name: "Carlos Carrossel"
+    icon: ✍️
+    role: "Criador de conteúdo Instagram Feed (ângulos + carrossel)"
+    path: ./agents/carlos-carrossel.agent.md
+
+  - id: renata-revisao
+    name: "Renata Revisão"
+    icon: ✅
+    role: "Revisora de qualidade de conteúdo Instagram"
+    path: ./agents/renata-revisao.agent.md
+
+  - id: duda-design
+    name: "Duda Design"
+    icon: 🎨
+    role: "Criadora de slides visuais HTML/CSS com identidade ATRAE"
+    path: ./agents/duda-design.agent.md
+
+  - id: pablo-publicador
+    name: "Pablo Publicador"
+    icon: 📤
+    role: "Revisor visual e publicador do carrossel no Instagram"
+    path: ./agents/pablo-publicador.agent.md
+
+pipeline:
+  entry: ./pipeline/pipeline.yaml
+
+skills:
+  - web_search
+  - web_fetch
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+  - pipeline/data/tone-of-voice.md
+  - pipeline/data/brand-guidelines.md
+
+investigation:
+  enriched: false
+  profiles_analyzed: 0
+  date: "2026-03-23"
+  note: "Sherlock bloqueado por permissão de browser. Re-executar /opensquad run com permissões habilitadas para enriquecer os agentes com padrões reais de @pedrosobral e @adrianogianini."
+  dir: squads/conteudo-instagram/_investigations

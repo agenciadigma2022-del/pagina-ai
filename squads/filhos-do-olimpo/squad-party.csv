@@ -1,0 +1,6 @@
+id,name,icon,role,execution,path
+lisia,Lísia,📜,Roteirista — escreve o roteiro completo seguindo o Arco de 4 Partes,inline,./agents/lisia.agent.md
+claudio,Cláudio,🎬,Diretor de Cenas — divide o roteiro em cenas com prompts visuais e narração,inline,./agents/claudio.agent.md
+orfeu,Orfeu,🎙️,Narrador — gera áudio TTS para cada cena via ElevenLabs,inline,./agents/orfeu.agent.md
+apolo,Apolo,🎨,Ilustrador — gera imagens cinematográficas dark para cada cena,inline,./agents/apolo.agent.md
+hades,Hades,🔥,Sonoplasta — gera som de fogueira e mixa com as narrações,inline,./agents/hades.agent.md

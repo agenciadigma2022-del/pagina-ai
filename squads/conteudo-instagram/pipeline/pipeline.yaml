@@ -1,0 +1,67 @@
+name: "Pipeline de Conteúdo Instagram Feed"
+squad: conteudo-instagram
+version: "1.0.0"
+
+checkpoints:
+  - step-01-foco-pesquisa
+  - step-03-selecionar-pauta
+  - step-05-selecionar-angulo
+  - step-07-aprovar-conteudo
+  - step-09-aprovacao-final
+  - step-12-aprovar-visual
+
+on_reject:
+  step-08-revisar-conteudo: step-06-criar-carrossel
+
+steps:
+  - id: step-01-foco-pesquisa
+    file: ./steps/step-01-foco-pesquisa.md
+    description: "Checkpoint: Define o foco da pesquisa (tema + período)"
+
+  - id: step-02-pesquisar-noticias
+    file: ./steps/step-02-pesquisar-noticias.md
+    description: "Natan Notícias pesquisa e ranqueia as pautas mais relevantes"
+
+  - id: step-03-selecionar-pauta
+    file: ./steps/step-03-selecionar-pauta.md
+    description: "Checkpoint: Usuário escolhe a pauta para desenvolver"
+
+  - id: step-04-gerar-angulos
+    file: ./steps/step-04-gerar-angulos.md
+    description: "Carlos Carrossel gera 5 ângulos para a pauta selecionada"
+
+  - id: step-05-selecionar-angulo
+    file: ./steps/step-05-selecionar-angulo.md
+    description: "Checkpoint: Usuário escolhe o ângulo + tom de voz"
+
+  - id: step-06-criar-carrossel
+    file: ./steps/step-06-criar-carrossel.md
+    description: "Carlos Carrossel cria o carrossel completo (slides + legenda + hashtags)"
+
+  - id: step-07-aprovar-conteudo
+    file: ./steps/step-07-aprovar-conteudo.md
+    description: "Checkpoint: Usuário revisa e aprova o rascunho do carrossel"
+
+  - id: step-08-revisar-conteudo
+    file: ./steps/step-08-revisar-conteudo.md
+    description: "Renata Revisão avalia qualidade e emite veredicto APROVAR/REJEITAR"
+
+  - id: step-09-aprovacao-final
+    file: ./steps/step-09-aprovacao-final.md
+    description: "Checkpoint: Aprovação final do conteúdo de texto"
+
+  - id: step-10-gerar-html-slides
+    file: ./steps/step-10-gerar-html-slides.md
+    description: "Duda Design gera HTML/CSS para cada slide com identidade visual ATRAE"
+
+  - id: step-11-renderizar-slides
+    file: ./steps/step-11-renderizar-slides.md
+    description: "Duda Design renderiza slides HTML em imagens PNG 1080×1080px via Playwright"
+
+  - id: step-12-aprovar-visual
+    file: ./steps/step-12-aprovar-visual.md
+    description: "Checkpoint: Usuário revisa e aprova os slides visuais renderizados"
+
+  - id: step-13-publicar-instagram
+    file: ./steps/step-13-publicar-instagram.md
+    description: "Pablo Publicador revisa slides e publica o carrossel no Instagram"

@@ -1,0 +1,62 @@
+name: "Filhos do Olimpo — Gerador de Vídeos Dark YouTube"
+code: filhos-do-olimpo
+description: >
+  Produz vídeos dark cinematográficos para o canal Filhos do Olimpo.
+  Para cada episódio: roteiro completo (Arco de 4 Partes), divisão em cenas,
+  narração TTS por cena, imagem cinematográfica por cena e mixagem com fogueira ao fundo.
+icon: 🏛️
+version: "1.0.0"
+performance_mode: economico
+language: pt-BR
+company: Filhos do Olimpo
+created: "2026-04-14"
+
+agents:
+  - id: lisia
+    name: "Lísia"
+    icon: 📜
+    role: "Roteirista — escreve o roteiro completo seguindo o Arco de 4 Partes"
+    path: ./agents/lisia.agent.md
+
+  - id: claudio
+    name: "Cláudio"
+    icon: 🎬
+    role: "Diretor de Cenas — divide o roteiro em cenas com prompts visuais e narração"
+    path: ./agents/claudio.agent.md
+
+  - id: orfeu
+    name: "Orfeu"
+    icon: 🎙️
+    role: "Narrador — gera áudio TTS para cada cena via ElevenLabs"
+    path: ./agents/orfeu.agent.md
+
+  - id: apolo
+    name: "Apolo"
+    icon: 🎨
+    role: "Ilustrador — gera imagens cinematográficas dark para cada cena"
+    path: ./agents/apolo.agent.md
+
+  - id: hades
+    name: "Hades"
+    icon: 🔥
+    role: "Sonoplasta — gera som de fogueira e mixa com as narrações"
+    path: ./agents/hades.agent.md
+
+pipeline:
+  entry: ./pipeline/pipeline.yaml
+
+skills:
+  - web_search
+  - image-generator
+
+data:
+  - pipeline/data/canal-identity.md
+  - pipeline/data/roteiro-framework.md
+  - pipeline/data/visual-style.md
+
+investigation:
+  enriched: false
+  profiles_analyzed: 0
+  date: "2026-04-14"
+  note: "Squad criado com base no Guia do Canal Filhos do Olimpo (Filhos_do_Olimpo_Guia_Canal.docx)"
+  dir: squads/filhos-do-olimpo/_investigations

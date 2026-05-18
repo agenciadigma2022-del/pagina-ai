@@ -1,0 +1,46 @@
+name: "Pipeline — Narrativas Imortais"
+squad: narrativas-imortais
+version: "1.0.0"
+
+checkpoints:
+  - step-01-escolher-obra
+  - step-03-aprovar-roteiro
+  - step-07-aprovar-cenas-e-audio
+  - step-09-aprovar-imagens
+
+steps:
+  - id: step-01-escolher-obra
+    file: ./steps/step-01-escolher-obra.md
+    description: "Checkpoint: Define a obra, autor e ângulo narrativo do episódio"
+
+  - id: step-02-roteirizar
+    file: ./steps/step-02-roteirizar.md
+    description: "Edgar adapta a obra em roteiro educativo cinematográfico em PT-BR"
+
+  - id: step-03-aprovar-roteiro
+    file: ./steps/step-03-aprovar-roteiro.md
+    description: "Checkpoint: Usuário revisa e aprova o roteiro"
+
+  - id: step-04-dividir-cenas
+    file: ./steps/step-04-dividir-cenas.md
+    description: "Virgílio divide o roteiro em cenas com narração e prompt visual"
+
+  - id: step-05-gerar-narracoes
+    file: ./steps/step-05-gerar-narracoes.md
+    description: "Eco gera o áudio TTS PT-BR de narração para cada cena via ElevenLabs"
+
+  - id: step-06-gerar-imagens-teste
+    file: ./steps/step-06-gerar-imagens-teste.md
+    description: "Gustave gera prompts de imagem prontos para uso em Midjourney, Leonardo.ai ou similar"
+
+  - id: step-07-aprovar-cenas-e-audio
+    file: ./steps/step-07-aprovar-cenas-e-audio.md
+    description: "Checkpoint: Usuário revisa narrações, gera imagens externamente e confirma quando prontas"
+
+  - id: step-09-aprovar-imagens
+    file: ./steps/step-09-aprovar-imagens.md
+    description: "Checkpoint: Confirmar imagens salvas e escolher volume da fogueira"
+
+  - id: step-10-mixar-fogueira
+    file: ./steps/step-10-mixar-fogueira.md
+    description: "Héstia gera o som de fogueira suave e mixa com as narrações de cada cena"

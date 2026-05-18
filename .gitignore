@@ -1,0 +1,56 @@
+# ============================================================
+# OpenSquad ATRAE — .gitignore
+# Repo raiz: ~/  (projeto opensquad, não home directory geral)
+# ============================================================
+
+# ── Diretórios pessoais do macOS (não fazem parte do projeto) ─
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Applications/
+Public/
+opt/
+
+# ── Arquivos do sistema ──────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.swo
+
+# ── Sessões e dados privados do Opensquad ───────────────────
+_opensquad/_browser_profile/
+_opensquad/logs/
+_opensquad/_investigations/
+
+# ── Outputs gerados por execuções (por run) ─────────────────
+squads/*/output/
+squads/*/state.json
+
+# ── Arquivos grandes gerados ─────────────────────────────────
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.mov
+
+# ── Configs do Claude Code (privadas) ────────────────────────
+.claude/
+
+# ── Node / Python / outros ───────────────────────────────────
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+
+# ── Outros diretórios da home que não são do projeto ─────────
+blog-automatico/

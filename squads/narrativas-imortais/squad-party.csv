@@ -1,0 +1,6 @@
+id,name,icon,role,execution,path
+edgar,Edgar,🖋️,Roteirista — adapta o livro/obra em roteiro educativo cinematográfico em PT-BR,inline,./agents/edgar.agent.md
+virgilio,Virgílio,📖,Diretor de Cenas — divide o roteiro em cenas com prompts visuais e narração,inline,./agents/virgilio.agent.md
+eco,Eco,🎙️,Narradora — gera áudio TTS PT-BR para cada cena via ElevenLabs,inline,./agents/eco.agent.md
+gustave,Gustave,🎨,Ilustrador — gera imagens cinematográficas 16:9 para cada cena,inline,./agents/gustave.agent.md
+hestia,Héstia,🔥,Sonoplasta — gera fogueira suave e mixa com as narrações,inline,./agents/hestia.agent.md

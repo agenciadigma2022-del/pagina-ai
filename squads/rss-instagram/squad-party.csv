@@ -1,0 +1,7 @@
+id,name,icon,role,execution,path
+rosa-rss,Rosa RSS,🔎,Monitora feeds RSS e ranqueia artigos novos de marketing digital,subagent,./agents/rosa-rss.agent.md
+natan-noticias,Natan Notícias,🔍,Pesquisador de contexto aprofundado do artigo selecionado,subagent,./agents/natan-noticias.agent.md
+carlos-carrossel,Carlos Carrossel,✍️,Criador de conteúdo Instagram Feed (ângulos + carrossel),inline,./agents/carlos-carrossel.agent.md
+renata-revisao,Renata Revisão,✅,Revisora de qualidade de conteúdo Instagram,inline,./agents/renata-revisao.agent.md
+duda-design,Duda Design,🎨,Criadora de slides visuais HTML/CSS com identidade visual ATRAE,inline,./agents/duda-design.agent.md
+pablo-publicador,Pablo Publicador,📤,Revisor visual e publicador do carrossel no Instagram,inline,./agents/pablo-publicador.agent.md
