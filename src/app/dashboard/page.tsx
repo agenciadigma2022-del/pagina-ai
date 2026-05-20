@@ -12,7 +12,7 @@ export default async function DashboardPage() {
     <main className="min-h-screen bg-gray-50">
       {/* Nav */}
       <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-        <span className="text-xl font-black text-violet-600">Págin.ai</span>
+        <span className="text-xl font-black text-violet-600">Empreendify</span>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-400">{user?.email}</span>
           <form action={signOut}>

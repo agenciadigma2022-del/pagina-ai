@@ -24,7 +24,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <a href="/" className="text-2xl font-black text-violet-600">Págin.ai</a>
+          <a href="/" className="text-2xl font-black text-violet-600">Empreendify</a>
           <p className="text-gray-500 text-sm mt-2">Entre para criar sua página profissional</p>
         </div>
 

@@ -6,7 +6,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
-        <span className="text-xl font-bold text-gray-900">Págin<span className="text-violet-600">.ai</span></span>
+        <span className="text-xl font-bold text-gray-900">Empreend<span className="text-violet-600">ify</span></span>
         <div className="flex items-center gap-4">
           <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
             Ver templates
@@ -118,7 +118,7 @@ export default function HomePage() {
               { icon: "📱", title: "Mobile first", desc: "Todas as páginas são perfeitas no celular — onde seu cliente vai ver." },
               { icon: "💬", title: "WhatsApp integrado", desc: "Botão de WhatsApp nativo em todos os templates." },
               { icon: "⚡", title: "Vai ao ar em minutos", desc: "Sem precisar contratar desenvolvedor ou agência." },
-              { icon: "🔒", title: "Domínio próprio", desc: "Use seu domínio ou publique em seusite.pagina.ai grátis." },
+              { icon: "🔒", title: "Domínio próprio", desc: "Use seu domínio ou publique em seusite.empreendify.com.br grátis." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl p-5 shadow-sm">
                 <div className="text-3xl mb-3">{item.icon}</div>
@@ -140,7 +140,7 @@ export default function HomePage() {
               name: "Grátis",
               price: "R$ 0",
               period: "para sempre",
-              features: ["1 página", "Subdomínio grátis (.pagina.ai)", "Templates básicos", "Botão WhatsApp"],
+              features: ["1 página", "Subdomínio grátis (.empreendify.com.br)", "Templates básicos", "Botão WhatsApp"],
               cta: "Começar grátis",
               highlight: false,
             },
@@ -204,7 +204,7 @@ export default function HomePage() {
             Sua página profissional te espera
           </h2>
           <p className="text-violet-200 mb-8">
-            Junte-se a milhares de profissionais que já usam o Págin.ai para aparecer online.
+            Junte-se a milhares de profissionais que já usam o Empreendify para aparecer online.
           </p>
           <Link
             href="/dashboard"
@@ -218,7 +218,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-8 px-6 text-center border-t border-gray-100">
         <p className="text-sm font-bold text-gray-900 mb-1">
-          Págin<span className="text-violet-600">.ai</span>
+          Empreend<span className="text-violet-600">ify</span>
         </p>
         <p className="text-xs text-gray-400">Feito no Brasil 🇧🇷 para profissionais brasileiros</p>
       </footer>

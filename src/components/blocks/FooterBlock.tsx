@@ -34,7 +34,7 @@ export function FooterBlock({ data, palette }: { data: FooterData; palette: Pale
         </div>
         {data.showBranding && (
           <p className="text-xs text-white opacity-40">
-            Criado com <a href="/" className="underline">Págin.ai</a>
+            Criado com <a href="/" className="underline">Empreendify</a>
           </p>
         )}
       </div>
