@@ -16,24 +16,36 @@ export function CTABannerBlock({ data, palette }: { data: CTABannerData; palette
     : data.ctaLink
 
   return (
-    <section className="py-16 px-6 text-center" style={{ backgroundColor: palette.primary }}>
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: "#FFFFFF" }}>
-          {data.headline}
-        </h2>
-        <p className="text-base mb-8 opacity-80" style={{ color: "#FFFFFF" }}>
-          {data.subheadline}
-        </p>
-        <a
-          href={href}
-          target={data.ctaType === "whatsapp" ? "_blank" : undefined}
-          rel="noopener noreferrer"
-          className="inline-block px-8 py-4 rounded-full font-semibold text-lg transition-opacity hover:opacity-90"
-          style={{ backgroundColor: palette.accent, color: palette.primary }}
-        >
-          {data.ctaType === "whatsapp" && "📱 "}
-          {data.ctaText}
-        </a>
+    <section className="py-24 px-8 md:px-16" style={{ backgroundColor: palette.secondary || palette.primary }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-10" style={{ backgroundColor: palette.accent }} />
+              <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: palette.accent }}>
+                Próximo passo
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+              {data.headline}
+            </h2>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <p className="text-lg text-white/65 leading-relaxed">
+              {data.subheadline}
+            </p>
+            <a
+              href={href}
+              target={data.ctaType === "whatsapp" ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:gap-5 self-start"
+              style={{ backgroundColor: palette.accent, color: palette.primary }}
+            >
+              {data.ctaText} <span>→</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )

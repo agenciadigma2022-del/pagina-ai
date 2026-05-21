@@ -8,34 +8,44 @@ interface HeroData {
   ctaText: string
   ctaLink: string
   imageUrl?: string
-  backgroundType: "color" | "image" | "photo"
+  backgroundType?: string
 }
 
 export function HeroBlock({ data, palette }: { data: HeroData; palette: Palette }) {
   return (
-    <section
-      className="relative min-h-[80vh] flex items-center px-6 py-20"
-      style={{ backgroundColor: palette.primary }}
-    >
+    <section className="relative min-h-screen flex items-end overflow-hidden" style={{ backgroundColor: palette.primary }}>
       {data.imageUrl && (
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${data.imageUrl})` }}
-        />
+        <>
+          <img src={data.imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div
+            className="absolute inset-0"
+            style={{ background: `linear-gradient(to top, ${palette.primary}F8 0%, ${palette.primary}BB 40%, ${palette.primary}33 100%)` }}
+          />
+        </>
       )}
-      <div className="relative z-10 max-w-2xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight" style={{ color: "#FFFFFF" }}>
+
+      <div className="relative z-10 w-full px-8 md:px-16 pb-20 pt-48 max-w-5xl mx-auto">
+        <div className="flex items-center gap-4 mb-8">
+          <div className="h-px w-10" style={{ backgroundColor: palette.accent }} />
+          <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: palette.accent }}>
+            Psicoterapia
+          </span>
+        </div>
+
+        <h1 className="text-5xl md:text-[4.5rem] font-bold text-white leading-[1.05] mb-8 max-w-2xl">
           {data.headline}
         </h1>
-        <p className="text-lg md:text-xl mb-8 opacity-90" style={{ color: "#FFFFFF" }}>
+
+        <p className="text-lg text-white/65 mb-12 max-w-md leading-relaxed">
           {data.subheadline}
         </p>
+
         <a
           href={data.ctaLink}
-          className="inline-block px-8 py-4 rounded-full font-semibold text-lg transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-3 px-8 py-4 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:gap-5"
           style={{ backgroundColor: palette.accent, color: palette.primary }}
         >
-          {data.ctaText}
+          {data.ctaText} <span>→</span>
         </a>
       </div>
     </section>
