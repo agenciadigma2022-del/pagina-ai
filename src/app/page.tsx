@@ -146,7 +146,7 @@ export default function HomePage() {
             },
             {
               name: "Pro",
-              price: "R$ 19",
+              price: "R$ 27",
               period: "por mês",
               features: ["Páginas ilimitadas", "Domínio próprio", "Sem marca d'água", "Analytics", "Formulário de contato", "Suporte prioritário"],
               cta: "Assinar Pro",
@@ -154,8 +154,8 @@ export default function HomePage() {
             },
             {
               name: "Anual",
-              price: "R$ 99",
-              period: "por ano · economize 57%",
+              price: "R$ 197",
+              period: "por ano · economize 39%",
               features: ["Tudo do Pro", "2 meses grátis", "Acesso antecipado a novos templates"],
               cta: "Assinar Anual",
               highlight: false,
