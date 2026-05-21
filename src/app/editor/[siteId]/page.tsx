@@ -9,6 +9,7 @@ import { EditorProvider } from "@/components/editor/EditorContext"
 import { EditorCanvas } from "@/components/editor/EditorCanvas"
 import { BlockEditorPanel } from "@/components/editor/BlockEditorPanel"
 import { EditorSidebarList } from "@/components/editor/EditorSidebarList"
+import { PaletteEditor } from "@/components/editor/PaletteEditor"
 import { SaveButton } from "@/components/editor/SaveButton"
 
 export default async function EditorPage({ params }: { params: Promise<{ siteId: string }> }) {
@@ -42,12 +43,15 @@ export default async function EditorPage({ params }: { params: Promise<{ siteId:
             {user && <p className="text-xs text-gray-300 truncate mt-0.5">{user.email}</p>}
           </div>
 
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto p-4 space-y-6">
+            <PaletteEditor />
+            <div className="h-px bg-gray-100" />
+            <EditorSidebarList />
+            <div className="h-px bg-gray-100" />
             <BlockEditorPanel />
           </div>
 
           <div className="p-4 border-t border-gray-100 space-y-2">
-            <EditorSidebarList />
             <SaveButton siteId={siteId} title={template.name} niche={template.niche} />
             <Link
               href={`/p/${template.id}`}

@@ -7,9 +7,9 @@ export function BlockEditorPanel() {
 
   if (!selectedId) {
     return (
-      <div className="p-4 text-center text-gray-400 text-sm mt-8">
-        <div className="text-3xl mb-3">👆</div>
-        Clique em qualquer seção da página para editar
+      <div className="text-center text-gray-400 text-sm py-4">
+        <div className="text-2xl mb-2">👆</div>
+        Clique em uma seção para editar
       </div>
     )
   }
@@ -20,9 +20,9 @@ export function BlockEditorPanel() {
   const idx = blocks.findIndex((b) => b.id === selectedId)
 
   return (
-    <div className="flex flex-col h-full">
+    <div>
       {/* Header */}
-      <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+      <div className="pb-3 border-b border-gray-100 flex items-center justify-between mb-3">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-violet-600">
             {block.type.replace("-", " ")}
@@ -50,7 +50,7 @@ export function BlockEditorPanel() {
       </div>
 
       {/* Campos */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="space-y-4">
         <FieldsForBlock
           type={block.type}
           data={block.data as Record<string, unknown>}
