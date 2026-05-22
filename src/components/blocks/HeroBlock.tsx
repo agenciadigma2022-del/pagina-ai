@@ -9,6 +9,7 @@ interface HeroData {
   ctaLink: string
   imageUrl?: string
   backgroundType?: string
+  label?: string
 }
 
 export function HeroBlock({ data, palette }: { data: HeroData; palette: Palette }) {
@@ -28,7 +29,7 @@ export function HeroBlock({ data, palette }: { data: HeroData; palette: Palette 
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px w-10" style={{ backgroundColor: palette.accent }} />
           <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: palette.accent }}>
-            Psicoterapia
+            {data.label ?? ""}
           </span>
         </div>
 

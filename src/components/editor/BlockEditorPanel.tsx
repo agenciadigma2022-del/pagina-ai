@@ -80,6 +80,9 @@ function FieldsForBlock({
     case "hero":
       return (
         <>
+          <Field label="Label (acima do título)">
+            <Input value={(data.label as string) || ""} onChange={(v) => set("label", v)} placeholder="Ex: Psicoterapia, Personal Trainer..." />
+          </Field>
           <Field label="Título principal">
             <Textarea value={data.headline as string} onChange={(v) => set("headline", v)} />
           </Field>

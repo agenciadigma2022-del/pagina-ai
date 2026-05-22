@@ -15,6 +15,7 @@ export const psicologaTemplate: Template = {
     {
       type: "hero",
       data: {
+        label: "Psicoterapia",
         headline: "O cuidado que você merece começa aqui",
         subheadline: "Psicoterapia online e presencial para quem busca autoconhecimento, leveza e equilíbrio emocional.",
         ctaText: "Agendar consulta gratuita",
