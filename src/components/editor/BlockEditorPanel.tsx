@@ -92,8 +92,8 @@ function FieldsForBlock({
           <Field label="Link do botão">
             <Input value={data.ctaLink as string} onChange={(v) => set("ctaLink", v)} />
           </Field>
-          <Field label="URL da imagem de fundo">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://..." />
+          <Field label="Imagem de fundo" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
+            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
@@ -148,8 +148,8 @@ function FieldsForBlock({
               <option value="right">Direita</option>
             </select>
           </Field>
-          <Field label="URL da imagem">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://..." />
+          <Field label="Imagem" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
+            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
@@ -241,8 +241,8 @@ function FieldsForBlock({
           <Field label="Bio / Sobre você">
             <Textarea value={data.bio as string} onChange={(v) => set("bio", v)} />
           </Field>
-          <Field label="URL da sua foto">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://..." />
+          <Field label="Sua foto" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
+            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
@@ -335,11 +335,12 @@ function FieldsForBlock({
 
 /* ─── Componentes de UI reutilizáveis ─── */
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1">
       <label className="text-xs font-medium text-gray-500">{label}</label>
       {children}
+      {hint && <p className="text-xs text-gray-400 leading-snug">{hint}</p>}
     </div>
   )
 }
