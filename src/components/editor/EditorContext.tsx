@@ -6,12 +6,14 @@ import { Block, Palette } from "@/types"
 interface EditorContextValue {
   blocks: Block[]
   palette: Palette
+  slug: string
   selectedId: string | null
   select: (id: string) => void
   deselect: () => void
   updateBlock: (id: string, data: Record<string, unknown>) => void
   moveBlock: (id: string, direction: "up" | "down") => void
   updatePalette: (key: keyof Palette, value: string) => void
+  updateSlug: (slug: string) => void
 }
 
 const EditorContext = createContext<EditorContextValue | null>(null)
@@ -20,13 +22,16 @@ export function EditorProvider({
   children,
   initialBlocks,
   palette: initialPalette,
+  initialSlug,
 }: {
   children: React.ReactNode
   initialBlocks: Block[]
   palette: Palette
+  initialSlug: string
 }) {
   const [blocks, setBlocks] = useState<Block[]>(initialBlocks)
   const [palette, setPalette] = useState<Palette>(initialPalette)
+  const [slug, setSlug] = useState<string>(initialSlug)
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
   function select(id: string) {
@@ -59,8 +64,12 @@ export function EditorProvider({
     setPalette((prev) => ({ ...prev, [key]: value }))
   }
 
+  function updateSlug(value: string) {
+    setSlug(value)
+  }
+
   return (
-    <EditorContext.Provider value={{ blocks, palette, selectedId, select, deselect, updateBlock, moveBlock, updatePalette }}>
+    <EditorContext.Provider value={{ blocks, palette, slug, selectedId, select, deselect, updateBlock, moveBlock, updatePalette, updateSlug }}>
       {children}
     </EditorContext.Provider>
   )

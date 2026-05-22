@@ -10,6 +10,7 @@ import { EditorCanvas } from "@/components/editor/EditorCanvas"
 import { BlockEditorPanel } from "@/components/editor/BlockEditorPanel"
 import { EditorSidebarList } from "@/components/editor/EditorSidebarList"
 import { PaletteEditor } from "@/components/editor/PaletteEditor"
+import { SlugEditor } from "@/components/editor/SlugEditor"
 import { SaveButton } from "@/components/editor/SaveButton"
 
 export default async function EditorPage({ params }: { params: Promise<{ siteId: string }> }) {
@@ -24,9 +25,10 @@ export default async function EditorPage({ params }: { params: Promise<{ siteId:
     : template.blocks.map((b) => ({ ...b, id: generateId() }))
 
   const palette = saved ? saved.palette : template.palette
+  const initialSlug = saved?.slug ?? siteId
 
   return (
-    <EditorProvider initialBlocks={blocks} palette={palette}>
+    <EditorProvider initialBlocks={blocks} palette={palette} initialSlug={initialSlug}>
       <div className="flex h-screen overflow-hidden bg-gray-100">
 
         {/* Sidebar esquerda */}
@@ -44,6 +46,8 @@ export default async function EditorPage({ params }: { params: Promise<{ siteId:
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-6">
+            <SlugEditor siteId={siteId} />
+            <div className="h-px bg-gray-100" />
             <PaletteEditor />
             <div className="h-px bg-gray-100" />
             <EditorSidebarList />

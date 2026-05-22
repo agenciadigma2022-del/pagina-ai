@@ -11,12 +11,12 @@ interface Props {
 }
 
 export function SaveButton({ siteId, title, niche }: Props) {
-  const { blocks, palette } = useEditor()
+  const { blocks, palette, slug } = useEditor()
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle")
 
   async function handleSave() {
     setStatus("saving")
-    const result = await saveSite(siteId, title, niche, blocks, palette)
+    const result = await saveSite(siteId, slug, title, niche, blocks, palette)
     if (result.ok) {
       setStatus("saved")
       setTimeout(() => setStatus("idle"), 2500)

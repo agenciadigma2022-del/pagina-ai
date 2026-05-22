@@ -1,6 +1,6 @@
 import { BlockRenderer } from "@/components/blocks/BlockRenderer"
 import { getTemplateById, templates } from "@/templates"
-import { getSite } from "@/app/actions/sites"
+import { getSiteBySlug } from "@/app/actions/sites"
 import { Block } from "@/types"
 import { generateId } from "@/lib/utils"
 
@@ -10,7 +10,7 @@ export default async function PublishedPage({ params }: { params: Promise<{ slug
   const { slug } = await params
 
   // Carrega versão salva; fallback para template
-  const saved = await getSite(slug)
+  const saved = await getSiteBySlug(slug)
   const template = getTemplateById(slug) ?? templates[0]
 
   const blocks: Block[] = saved

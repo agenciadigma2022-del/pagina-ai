@@ -6,6 +6,7 @@ import { Block, Palette } from "@/types"
 
 interface SiteRow {
   id: string
+  slug: string
   title: string
   niche: string | null
   blocks: Block[]
@@ -15,6 +16,7 @@ interface SiteRow {
 
 export async function saveSite(
   id: string,
+  slug: string,
   title: string,
   niche: string,
   blocks: Block[],
@@ -29,9 +31,12 @@ export async function saveSite(
 
   const { error } = await client
     .from("sites")
-    .upsert({ id, title, niche, blocks, palette, user_id: user.id }, { onConflict: "id" })
+    .upsert({ id, slug, title, niche, blocks, palette, user_id: user.id }, { onConflict: "id" })
 
-  if (error) return { ok: false, error: error.message }
+  if (error) {
+    if (error.code === "23505") return { ok: false, error: "Esse endereço já está em uso. Escolha outro." }
+    return { ok: false, error: error.message }
+  }
   return { ok: true }
 }
 
@@ -49,6 +54,34 @@ export async function getSite(id: string): Promise<SiteRow | null> {
   return data as SiteRow
 }
 
+export async function getSiteBySlug(slug: string): Promise<SiteRow | null> {
+  const client = createServiceClient()
+  if (!client) return null
+
+  const { data, error } = await client
+    .from("sites")
+    .select("*")
+    .eq("slug", slug)
+    .single()
+
+  if (error || !data) return null
+  return data as SiteRow
+}
+
+export async function checkSlugAvailable(slug: string, currentId: string): Promise<boolean> {
+  const client = createServiceClient()
+  if (!client) return false
+
+  const { data } = await client
+    .from("sites")
+    .select("id")
+    .eq("slug", slug)
+    .neq("id", currentId)
+    .maybeSingle()
+
+  return !data
+}
+
 export async function getUserSites(): Promise<SiteRow[]> {
   const authClient = await createAuthClient()
   const { data: { user } } = await authClient.auth.getUser()
@@ -59,7 +92,7 @@ export async function getUserSites(): Promise<SiteRow[]> {
 
   const { data, error } = await client
     .from("sites")
-    .select("id, title, niche, palette, updated_at")
+    .select("id, slug, title, niche, palette, updated_at")
     .eq("user_id", user.id)
     .order("updated_at", { ascending: false })
 
