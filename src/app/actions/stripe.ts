@@ -35,20 +35,29 @@ export async function createCheckoutSession(priceId: string) {
   const { data: { user } } = await authClient.auth.getUser()
   if (!user) redirect("/login")
 
-  const customerId = await getOrCreateCustomer(user.id, user.email!)
+  try {
+    const customerId = await getOrCreateCustomer(user.id, user.email!)
 
-  const session = await getStripe().checkout.sessions.create({
-    customer: customerId,
-    payment_method_types: ["card"],
-    line_items: [{ price: priceId, quantity: 1 }],
-    mode: "subscription",
-    success_url: `${SITE_URL}/dashboard?plano=ativado`,
-    cancel_url: `${SITE_URL}/dashboard`,
-    locale: "pt-BR",
-    allow_promotion_codes: true,
-  })
+    const session = await getStripe().checkout.sessions.create({
+      customer: customerId,
+      payment_method_types: ["card"],
+      line_items: [{ price: priceId, quantity: 1 }],
+      mode: "subscription",
+      success_url: `${SITE_URL}/dashboard?plano=ativado`,
+      cancel_url: `${SITE_URL}/dashboard`,
+      locale: "pt-BR",
+      allow_promotion_codes: true,
+    })
 
-  redirect(session.url!)
+    redirect(session.url!)
+  } catch (err: unknown) {
+    // Deixa o redirect do Next.js propagar normalmente
+    const message = (err as { digest?: string })?.digest
+    if (message?.startsWith("NEXT_REDIRECT")) throw err
+    // Redireciona para o dashboard com a mensagem de erro visível na URL
+    const msg = err instanceof Error ? err.message : String(err)
+    redirect(`${SITE_URL}/dashboard?stripe_error=${encodeURIComponent(msg)}`)
+  }
 }
 
 export async function createPortalSession() {

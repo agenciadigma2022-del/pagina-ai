@@ -8,7 +8,13 @@ import { getUserPlan, createCheckoutSession, createPortalSession } from "@/app/a
 const PRO_PRICE_ID = process.env.STRIPE_PRO_PRICE_ID!
 const ANNUAL_PRICE_ID = process.env.STRIPE_ANNUAL_PRICE_ID!
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ plano?: string; stripe_error?: string }>
+}) {
+  const { plano, stripe_error } = await searchParams
+
   const [user, savedSites, plan] = await Promise.all([
     getUser(),
     getUserSites(),
@@ -37,6 +43,18 @@ export default async function DashboardPage() {
           </form>
         </div>
       </header>
+
+      {/* Feedback pós-checkout */}
+      {plano === "ativado" && (
+        <div className="bg-green-50 border-b border-green-200 px-6 py-3 text-green-800 text-sm font-medium text-center">
+          🎉 Plano Pro ativado com sucesso! Bem-vindo ao Pro.
+        </div>
+      )}
+      {stripe_error && (
+        <div className="bg-red-50 border-b border-red-200 px-6 py-3 text-red-800 text-sm text-center">
+          <strong>Erro no checkout:</strong> {stripe_error}
+        </div>
+      )}
 
       <div className="max-w-5xl mx-auto px-6 py-10">
 
