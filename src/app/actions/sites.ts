@@ -21,13 +21,40 @@ export async function saveSite(
   niche: string,
   blocks: Block[],
   palette: Palette
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; error?: string; upgrade?: boolean }> {
   const authClient = await createAuthClient()
   const { data: { user } } = await authClient.auth.getUser()
   if (!user) return { ok: false, error: "Não autenticado" }
 
   const client = createServiceClient()
   if (!client) return { ok: false, error: "Supabase não configurado" }
+
+  // Verificar limite do plano free
+  const { data: profile } = await client
+    .from("profiles")
+    .select("plan")
+    .eq("id", user.id)
+    .single()
+
+  const plan = (profile?.plan as string) ?? "free"
+
+  if (plan !== "pro") {
+    // Verificar se já existe outro site desse usuário
+    const { data: existing } = await client
+      .from("sites")
+      .select("id")
+      .eq("user_id", user.id)
+      .neq("id", id)
+      .limit(1)
+
+    if (existing && existing.length > 0) {
+      return {
+        ok: false,
+        upgrade: true,
+        error: "Plano gratuito permite apenas 1 site. Faça upgrade para o Pro e crie sites ilimitados.",
+      }
+    }
+  }
 
   const { error } = await client
     .from("sites")
