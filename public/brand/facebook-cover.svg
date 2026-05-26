@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <!-- Fundo escuro principal -->
+  <rect width="1200" height="630" fill="#111827"/>
+  <!-- Bloco violeta decorativo à esquerda -->
+  <rect x="0" y="0" width="480" height="630" fill="#7C3AED"/>
+  <!-- Ícone E grande no bloco violeta -->
+  <rect x="100" y="155" width="40" height="320" rx="20" fill="white"/>
+  <rect x="100" y="155" width="220" height="40" rx="20" fill="white"/>
+  <rect x="100" y="295" width="154" height="40" rx="20" fill="white"/>
+  <rect x="100" y="435" width="220" height="40" rx="20" fill="white"/>
+  <!-- Wordmark ao lado do ícone -->
+  <text x="362" y="285" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="52" letter-spacing="-1" fill="white">Empreend</text>
+  <text x="362" y="345" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="52" letter-spacing="-1" fill="white">ify</text>
+  <!-- Divisor vertical sutil -->
+  <rect x="480" y="0" width="3" height="630" fill="#1F2937"/>
+  <!-- Lado direito: headline e tagline -->
+  <text x="540" y="220" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="48" letter-spacing="-1" fill="white">Sua página.</text>
+  <text x="540" y="280" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="48" letter-spacing="-1" fill="white">Seu negócio.</text>
+  <!-- Subtítulo -->
+  <text x="540" y="350" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="400" font-size="24" fill="#9CA3AF">Páginas profissionais para autônomos brasileiros.</text>
+  <!-- Divisor -->
+  <rect x="540" y="390" width="80" height="3" rx="2" fill="#7C3AED"/>
+  <!-- URL -->
+  <text x="540" y="440" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="600" font-size="22" fill="#7C3AED">empreendify.com.br</text>
+  <!-- Detalhe decorativo canto direito -->
+  <circle cx="1150" cy="80" r="120" fill="#7C3AED" opacity="0.08"/>
+  <circle cx="1150" cy="80" r="70" fill="#7C3AED" opacity="0.08"/>
+</svg>

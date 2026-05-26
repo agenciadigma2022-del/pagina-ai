@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
+  <rect width="1080" height="1080" fill="#5B21B6"/>
+  <!-- Círculo de play -->
+  <circle cx="540" cy="480" r="200" fill="white" opacity="0.15"/>
+  <circle cx="540" cy="480" r="160" fill="white" opacity="0.15"/>
+  <!-- Triângulo de play -->
+  <path d="M480 380 L480 580 L660 480 Z" fill="white"/>
+  <!-- Label -->
+  <text x="540" y="840" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="56" fill="white" text-anchor="middle" letter-spacing="2">TUTORIAL</text>
+</svg>

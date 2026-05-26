@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
+  <rect width="1080" height="1080" fill="#6D28D9"/>
+  <!-- Grid 2x2 representando templates -->
+  <rect x="310" y="310" width="190" height="190" rx="28" fill="white" opacity="0.9"/>
+  <rect x="580" y="310" width="190" height="190" rx="28" fill="white" opacity="0.6"/>
+  <rect x="310" y="580" width="190" height="190" rx="28" fill="white" opacity="0.6"/>
+  <rect x="580" y="580" width="190" height="190" rx="28" fill="white" opacity="0.9"/>
+  <!-- Linhas internas simulando conteúdo -->
+  <rect x="330" y="360" width="110" height="12" rx="6" fill="#7C3AED" opacity="0.4"/>
+  <rect x="330" y="382" width="80" height="12" rx="6" fill="#7C3AED" opacity="0.4"/>
+  <rect x="600" y="360" width="110" height="12" rx="6" fill="#7C3AED" opacity="0.2"/>
+  <rect x="600" y="382" width="80" height="12" rx="6" fill="#7C3AED" opacity="0.2"/>
+  <rect x="330" y="630" width="110" height="12" rx="6" fill="#7C3AED" opacity="0.2"/>
+  <rect x="330" y="652" width="80" height="12" rx="6" fill="#7C3AED" opacity="0.2"/>
+  <rect x="600" y="630" width="110" height="12" rx="6" fill="#7C3AED" opacity="0.4"/>
+  <rect x="600" y="652" width="80" height="12" rx="6" fill="#7C3AED" opacity="0.4"/>
+  <!-- Label -->
+  <text x="540" y="860" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="56" fill="white" text-anchor="middle" letter-spacing="2">TEMPLATES</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
+  <rect width="1080" height="1080" fill="#4C1D95"/>
+  <!-- Envelope estilizado -->
+  <!-- Corpo do envelope -->
+  <rect x="240" y="360" width="600" height="380" rx="32" fill="white" opacity="0.15"/>
+  <rect x="250" y="370" width="580" height="360" rx="28" fill="white" opacity="0.9"/>
+  <!-- Aba do envelope (triângulo V) -->
+  <path d="M250 370 L540 570 L830 370" stroke="#7C3AED" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Linhas internas simulando texto -->
+  <rect x="320" y="600" width="300" height="16" rx="8" fill="#7C3AED" opacity="0.2"/>
+  <rect x="320" y="632" width="220" height="16" rx="8" fill="#7C3AED" opacity="0.2"/>
+  <!-- Label -->
+  <text x="540" y="880" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="60" fill="white" text-anchor="middle" letter-spacing="2">CONTATO</text>
+</svg>

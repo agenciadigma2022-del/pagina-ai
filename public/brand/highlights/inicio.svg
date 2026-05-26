@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
+  <rect width="1080" height="1080" fill="#7C3AED"/>
+  <!-- Casa (home icon) -->
+  <!-- Telhado: triângulo com path -->
+  <path d="M540 310 L740 490 L700 490 L700 720 L620 720 L620 600 L460 600 L460 720 L380 720 L380 490 L340 490 Z" fill="white"/>
+  <!-- Label -->
+  <text x="540" y="840" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="64" fill="white" text-anchor="middle" letter-spacing="2">INÍCIO</text>
+</svg>

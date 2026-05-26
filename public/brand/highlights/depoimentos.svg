@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
+  <rect width="1080" height="1080" fill="#7C3AED"/>
+  <!-- Aspas grandes estilizadas -->
+  <!-- Aspas esquerdas -->
+  <rect x="240" y="320" width="90" height="110" rx="20" fill="white" opacity="0.9"/>
+  <rect x="240" y="460" width="90" height="50" rx="20" fill="white" opacity="0.9"/>
+  <circle cx="285" cy="440" r="50" fill="white" opacity="0.9"/>
+  <!-- Aspas direitas -->
+  <rect x="400" y="320" width="90" height="110" rx="20" fill="white" opacity="0.9"/>
+  <rect x="400" y="460" width="90" height="50" rx="20" fill="white" opacity="0.9"/>
+  <circle cx="445" cy="440" r="50" fill="white" opacity="0.9"/>
+  <!-- Linhas de texto simulando depoimento -->
+  <rect x="240" y="580" width="600" height="20" rx="10" fill="white" opacity="0.3"/>
+  <rect x="240" y="616" width="480" height="20" rx="10" fill="white" opacity="0.3"/>
+  <rect x="240" y="652" width="540" height="20" rx="10" fill="white" opacity="0.3"/>
+  <!-- Estrelas -->
+  <text x="540" y="740" font-family="Inter, system-ui, sans-serif" font-size="48" fill="white" text-anchor="middle" opacity="0.8">★ ★ ★ ★ ★</text>
+  <!-- Label -->
+  <text x="540" y="880" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="52" fill="white" text-anchor="middle" letter-spacing="2">DEPOIMENTOS</text>
+</svg>
