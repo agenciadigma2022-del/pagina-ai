@@ -65,21 +65,28 @@ export async function createPortalSession() {
   const { data: { user } } = await authClient.auth.getUser()
   if (!user) redirect("/login")
 
-  const client = createServiceClient()!
-  const { data: profile } = await client
-    .from("profiles")
-    .select("stripe_customer_id")
-    .eq("id", user.id)
-    .single()
+  try {
+    const client = createServiceClient()!
+    const { data: profile } = await client
+      .from("profiles")
+      .select("stripe_customer_id")
+      .eq("id", user.id)
+      .single()
 
-  if (!profile?.stripe_customer_id) redirect("/dashboard")
+    if (!profile?.stripe_customer_id) redirect("/dashboard")
 
-  const session = await getStripe().billingPortal.sessions.create({
-    customer: profile.stripe_customer_id,
-    return_url: `${SITE_URL}/dashboard`,
-  })
+    const session = await getStripe().billingPortal.sessions.create({
+      customer: profile.stripe_customer_id,
+      return_url: `${SITE_URL}/dashboard`,
+    })
 
-  redirect(session.url)
+    redirect(session.url)
+  } catch (err: unknown) {
+    const message = (err as { digest?: string })?.digest
+    if (message?.startsWith("NEXT_REDIRECT")) throw err
+    const msg = err instanceof Error ? err.message : String(err)
+    redirect(`${SITE_URL}/dashboard?stripe_error=${encodeURIComponent(msg)}`)
+  }
 }
 
 export async function getUserPlan(): Promise<"free" | "pro"> {
