@@ -35,8 +35,11 @@ export default async function HomePage() {
 
       {/* Hero */}
       <section className="text-center px-6 pt-20 pb-16 max-w-3xl mx-auto">
-        <div className="inline-block text-xs font-semibold bg-violet-100 text-violet-700 px-3 py-1 rounded-full mb-6">
-          100% em português · Pague em real · Sem programador
+        <div className="inline-flex items-center gap-3 mb-6">
+          <span className="text-xs font-bold bg-violet-100 text-violet-700 px-3 py-1 rounded-full">
+            Sua página. Seu negócio.
+          </span>
+          <span className="text-xs text-gray-400">100% em português · Pague em real</span>
         </div>
         <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
           A página profissional do{" "}
@@ -328,7 +331,7 @@ export default async function HomePage() {
             <Link href="/login" className="hover:text-gray-600">Entrar</Link>
             <Link href="/dashboard" className="hover:text-gray-600">Criar página</Link>
           </div>
-          <p className="text-xs text-gray-400">Feito no Brasil 🇧🇷 para profissionais brasileiros</p>
+          <p className="text-xs text-gray-400">Sua página. Seu negócio. · Feito no Brasil 🇧🇷</p>
         </div>
       </footer>
     </main>
