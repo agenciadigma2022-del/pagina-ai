@@ -12,6 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Empreendify — Sua página. Seu negócio.",
   description: "Crie sua página profissional sem código. Templates prontos para dentista, psicóloga, academia, barbearia e muito mais. 100% em português.",
+  themeColor: "#7C3AED",
 }
 
 export default function RootLayout({
