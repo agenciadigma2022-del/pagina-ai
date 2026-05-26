@@ -29,15 +29,32 @@ export async function POST(request: NextRequest) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session
-      await client
-        .from("profiles")
-        .update({
-          plan: "pro",
-          subscription_id: session.subscription as string,
-          subscription_status: "active",
-          updated_at: new Date().toISOString(),
-        })
-        .eq("stripe_customer_id", session.customer as string)
+      const userId = session.metadata?.supabase_user_id
+
+      if (userId) {
+        // Atualiza pelo user_id (mais confiável) e salva o customer_id
+        await client
+          .from("profiles")
+          .update({
+            plan: "pro",
+            stripe_customer_id: session.customer as string,
+            subscription_id: session.subscription as string,
+            subscription_status: "active",
+            updated_at: new Date().toISOString(),
+          })
+          .eq("id", userId)
+      } else {
+        // Fallback: atualiza pelo customer_id
+        await client
+          .from("profiles")
+          .update({
+            plan: "pro",
+            subscription_id: session.subscription as string,
+            subscription_status: "active",
+            updated_at: new Date().toISOString(),
+          })
+          .eq("stripe_customer_id", session.customer as string)
+      }
       break
     }
 

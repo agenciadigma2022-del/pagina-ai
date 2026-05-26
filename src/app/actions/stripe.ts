@@ -47,6 +47,7 @@ export async function createCheckoutSession(priceId: string) {
       cancel_url: `${SITE_URL}/dashboard`,
       locale: "pt-BR",
       allow_promotion_codes: true,
+      metadata: { supabase_user_id: user.id },
     })
 
     redirect(session.url!)
