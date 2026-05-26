@@ -1,6 +1,7 @@
 "use client"
 
 import { useEditor } from "./EditorContext"
+import { ImageUpload } from "./ImageUpload"
 
 export function BlockEditorPanel() {
   const { blocks, selectedId, updateBlock, moveBlock, deselect } = useEditor()
@@ -95,8 +96,8 @@ function FieldsForBlock({
           <Field label="Link do botão">
             <Input value={data.ctaLink as string} onChange={(v) => set("ctaLink", v)} />
           </Field>
-          <Field label="Imagem de fundo" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
+          <Field label="Imagem de fundo">
+            <ImageUpload value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
@@ -151,8 +152,8 @@ function FieldsForBlock({
               <option value="right">Direita</option>
             </select>
           </Field>
-          <Field label="Imagem" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
+          <Field label="Imagem">
+            <ImageUpload value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
@@ -244,8 +245,8 @@ function FieldsForBlock({
           <Field label="Bio / Sobre você">
             <Textarea value={data.bio as string} onChange={(v) => set("bio", v)} />
           </Field>
-          <Field label="Sua foto" hint="Cole a URL de uma imagem. Use unsplash.com para fotos gratuitas.">
-            <Input value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
+          <Field label="Sua foto">
+            <ImageUpload value={(data.imageUrl as string) || ""} onChange={(v) => set("imageUrl", v)} placeholder="https://images.unsplash.com/..." />
           </Field>
         </>
       )
