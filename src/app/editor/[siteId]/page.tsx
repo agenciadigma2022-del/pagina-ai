@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { getTemplateById, templates } from "@/templates"
+import { Logo } from "@/components/ui/Logo"
 import { Block } from "@/types"
 import { generateId } from "@/lib/utils"
 import { getSite } from "@/app/actions/sites"
@@ -40,6 +41,7 @@ export default async function EditorPage({ params }: { params: Promise<{ siteId:
                 <button type="submit" className="text-xs text-gray-400 hover:text-gray-600">Sair</button>
               </form>
             </div>
+            <Logo size="sm" />
             <h2 className="font-bold text-gray-800 mt-1">{template.name}</h2>
             <p className="text-xs text-gray-400">{template.niche}</p>
             {user && <p className="text-xs text-gray-300 truncate mt-0.5">{user.email}</p>}

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { templates } from "@/templates"
+import { Logo } from "@/components/ui/Logo"
 import { getUser } from "@/lib/supabase-auth"
 import { getUserSites } from "@/app/actions/sites"
 import { signOut } from "@/app/actions/auth"
@@ -28,7 +29,7 @@ export default async function DashboardPage({
     <main className="min-h-screen bg-gray-50">
       {/* Nav */}
       <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-        <span className="text-xl font-black text-violet-600">Empreendify</span>
+        <Logo size="md" />
         <div className="flex items-center gap-4">
           {isPro ? (
             <span className="text-xs font-bold bg-violet-600 text-white px-2.5 py-1 rounded-full">PRO</span>

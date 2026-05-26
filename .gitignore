@@ -13,6 +13,8 @@ Music/
 Pictures/
 Applications/
 Public/
+# Exceção: pasta public/ do Next.js (assets estáticos do projeto)
+!public/
 opt/
 
 # ── Arquivos do sistema ──────────────────────────────────────

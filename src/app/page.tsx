@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { templates } from "@/templates"
 import { createServerClient } from "@/lib/supabase-server"
+import { Logo } from "@/components/ui/Logo"
 
 export const revalidate = 3600 // atualiza o contador a cada 1 hora
 
@@ -19,7 +20,7 @@ export default async function HomePage() {
     <main className="min-h-screen bg-white font-sans">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
-        <span className="text-xl font-bold text-gray-900">Empreend<span className="text-violet-600">ify</span></span>
+        <Logo size="md" />
         <div className="flex items-center gap-4">
           <Link href="/login" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
             Entrar
@@ -324,9 +325,7 @@ export default async function HomePage() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-gray-100">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm font-bold text-gray-900">
-            Empreend<span className="text-violet-600">ify</span>
-          </p>
+          <Logo size="sm" showTagline />
           <div className="flex gap-6 text-xs text-gray-400">
             <Link href="/login" className="hover:text-gray-600">Entrar</Link>
             <Link href="/dashboard" className="hover:text-gray-600">Criar página</Link>
