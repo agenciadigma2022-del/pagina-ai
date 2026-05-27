@@ -14,7 +14,7 @@ export function FooterBlock({ data, palette }: { data: FooterData; palette: Pale
   const hasSocial = social.instagram || social.whatsapp || social.facebook
 
   return (
-    <footer className="py-12 px-8 md:px-16" style={{ backgroundColor: palette.primary }}>
+    <footer className="py-10 md:py-12 px-5 sm:px-8 md:px-16" style={{ backgroundColor: palette.primary }}>
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8" style={{ borderBottom: `1px solid rgba(255,255,255,0.1)` }}>
           <div>

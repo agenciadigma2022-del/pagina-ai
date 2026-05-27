@@ -16,16 +16,16 @@ interface CardsData {
 
 export function CardsBlock({ data, palette }: { data: CardsData; palette: Palette }) {
   return (
-    <section className="py-24 px-8 md:px-16" style={{ backgroundColor: palette.background }}>
+    <section className="py-16 md:py-24 px-5 sm:px-8 md:px-16" style={{ backgroundColor: palette.background }}>
       <div className="max-w-5xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-10 md:mb-16">
           <div className="flex items-center gap-4 mb-6">
             <div className="h-px w-10" style={{ backgroundColor: palette.accent }} />
             <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: palette.accent }}>
               Especialidades
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-xl" style={{ color: palette.text }}>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight max-w-xl" style={{ color: palette.text }}>
             {data.title}
           </h2>
           {data.subtitle && (

@@ -16,17 +16,17 @@ export function CTABannerBlock({ data, palette }: { data: CTABannerData; palette
     : data.ctaLink
 
   return (
-    <section className="py-24 px-8 md:px-16" style={{ backgroundColor: palette.secondary || palette.primary }}>
+    <section className="py-16 md:py-24 px-5 sm:px-8 md:px-16" style={{ backgroundColor: palette.secondary || palette.primary }}>
       <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-6 md:mb-8">
               <div className="h-px w-10" style={{ backgroundColor: palette.accent }} />
               <span className="text-xs font-semibold tracking-[0.25em] uppercase" style={{ color: palette.accent }}>
                 Próximo passo
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-tight">
               {data.headline}
             </h2>
           </div>
@@ -39,7 +39,7 @@ export function CTABannerBlock({ data, palette }: { data: CTABannerData; palette
               href={href}
               target={data.ctaType === "whatsapp" ? "_blank" : undefined}
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:gap-5 self-start"
+              className="inline-flex items-center gap-3 px-6 md:px-8 py-4 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:gap-5 self-start min-h-[52px]"
               style={{ backgroundColor: palette.accent, color: palette.primary }}
             >
               {data.ctaText} <span>→</span>

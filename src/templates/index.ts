@@ -5,6 +5,9 @@ import { barberTemplate } from "./barber"
 import { nutricionistaTemplate } from "./nutricionista"
 import { advogadoTemplate } from "./advogado"
 import { fotografoTemplate } from "./fotografo"
+import { esteticaTemplate } from "./estetica"
+import { freelancerTemplate } from "./freelancer"
+import { artesaTemplate } from "./artesa"
 import { Template } from "@/types"
 
 export const templates: Template[] = [
@@ -15,6 +18,9 @@ export const templates: Template[] = [
   advogadoTemplate,
   barberTemplate,
   fotografoTemplate,
+  esteticaTemplate,
+  freelancerTemplate,
+  artesaTemplate,
 ]
 
 export function getTemplateById(id: string): Template | undefined {
@@ -29,4 +35,7 @@ export {
   nutricionistaTemplate,
   advogadoTemplate,
   fotografoTemplate,
+  esteticaTemplate,
+  freelancerTemplate,
+  artesaTemplate,
 }

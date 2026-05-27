@@ -15,8 +15,8 @@ export function ImageTextBlock({ data, palette }: { data: ImageTextData; palette
   const isLeft = data.imagePosition === "left"
 
   return (
-    <section className="py-16 px-6" style={{ backgroundColor: palette.background }}>
-      <div className={`max-w-5xl mx-auto flex flex-col ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-12 items-center`}>
+    <section className="py-12 md:py-16 px-5 sm:px-6" style={{ backgroundColor: palette.background }}>
+      <div className={`max-w-5xl mx-auto flex flex-col ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-8 md:gap-12 items-center`}>
         <div className="flex-1">
           {data.imageUrl ? (
             <img src={data.imageUrl} alt={data.title} className="rounded-2xl w-full object-cover aspect-video" />
@@ -27,7 +27,7 @@ export function ImageTextBlock({ data, palette }: { data: ImageTextData; palette
           )}
         </div>
         <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: palette.text }}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: palette.text }}>
             {data.title}
           </h2>
           <p className="text-base leading-relaxed mb-6 opacity-80" style={{ color: palette.text }}>

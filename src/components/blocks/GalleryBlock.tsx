@@ -20,13 +20,16 @@ export function GalleryBlock({ data, palette }: { data: GalleryData; palette: Pa
           {data.subtitle}
         </p>
         {(data.images ?? []).length > 0 ? (
-          <div className={`grid grid-cols-2 md:grid-cols-${data.columns} gap-4`}>
+          <div
+            className="grid grid-cols-2 gap-3 md:gap-4"
+            style={{ gridTemplateColumns: `repeat(${Math.min(data.columns ?? 3, 3)}, minmax(0, 1fr))` } as React.CSSProperties}
+          >
             {(data.images ?? []).map((src, i) => (
               <img key={i} src={src} alt={`Resultado ${i + 1}`} className="rounded-xl w-full object-cover aspect-square" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="rounded-xl aspect-square flex items-center justify-center text-xs opacity-30" style={{ backgroundColor: palette.accent, color: palette.text }}>
                 Foto {i + 1}

@@ -14,8 +14,8 @@ export function AboutBlock({ data, palette }: { data: AboutData; palette: Palett
   const credentials = data.credentials ?? []
 
   return (
-    <section className="py-24 px-8 md:px-16 overflow-hidden" style={{ backgroundColor: palette.primary }}>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="py-16 md:py-24 px-5 sm:px-8 md:px-16 overflow-hidden" style={{ backgroundColor: palette.primary }}>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
         {/* Foto */}
         <div className="relative">
@@ -56,7 +56,7 @@ export function AboutBlock({ data, palette }: { data: AboutData; palette: Palett
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-6 md:mb-8 leading-tight">
             {data.name}
           </h2>
 

@@ -23,16 +23,16 @@ export function ServicesListBlock({ data, palette }: { data: ServicesListData; p
         </h2>
         <div className="space-y-4">
           {data.items.map((item, i) => (
-            <div key={i} className="flex items-center justify-between p-5 rounded-2xl" style={{ backgroundColor: palette.accent }}>
-              <div className="flex items-center gap-4">
-                <span className="text-2xl">{item.icon}</span>
-                <div>
+            <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-4 sm:p-5 rounded-2xl" style={{ backgroundColor: palette.accent }}>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <div className="min-w-0">
                   <p className="font-semibold" style={{ color: palette.text }}>{item.name}</p>
-                  <p className="text-sm opacity-70" style={{ color: palette.text }}>{item.description}</p>
+                  <p className="text-sm opacity-70 leading-snug" style={{ color: palette.text }}>{item.description}</p>
                 </div>
               </div>
               {item.price && (
-                <span className="font-bold text-lg ml-4 flex-shrink-0" style={{ color: palette.primary }}>
+                <span className="font-bold text-lg sm:ml-4 flex-shrink-0 pl-9 sm:pl-0" style={{ color: palette.primary }}>
                   {item.price}
                 </span>
               )}
