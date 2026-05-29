@@ -16,7 +16,9 @@ export const metadata: Metadata = {
   themeColor: "#7C3AED",
 }
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
+const GTM_ID     = process.env.NEXT_PUBLIC_GTM_ID
+const GA4_ID     = process.env.NEXT_PUBLIC_GA4_ID
+const FB_PIXEL   = process.env.NEXT_PUBLIC_FB_PIXEL_ID
 
 export default function RootLayout({
   children,
@@ -26,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
       <head>
-        {/* Google Tag Manager — snippet do <head> */}
+        {/* ── Google Tag Manager ───────────────────────────── */}
         {GTM_ID && (
           <Script
             id="gtm-head"
@@ -40,9 +42,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }}
           />
         )}
+
+        {/* ── Google Analytics 4 ───────────────────────────── */}
+        {GA4_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','${GA4_ID}',{page_path:window.location.pathname});`,
+              }}
+            />
+          </>
+        )}
+
+        {/* ── Meta Pixel ───────────────────────────────────── */}
+        {FB_PIXEL && (
+          <Script
+            id="fb-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','${FB_PIXEL}');
+fbq('track','PageView');`,
+            }}
+          />
+        )}
       </head>
       <body className="min-h-full flex flex-col">
-        {/* Google Tag Manager — noscript fallback */}
+        {/* GTM noscript fallback */}
         {GTM_ID && (
           <noscript>
             <iframe
@@ -50,6 +92,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+        {/* Meta Pixel noscript fallback */}
+        {FB_PIXEL && (
+          <noscript>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=${FB_PIXEL}&ev=PageView&noscript=1`}
+              alt=""
             />
           </noscript>
         )}
