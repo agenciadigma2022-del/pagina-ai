@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { signInWithPassword, signUpWithPassword, signInWithGoogle } from "@/app/actions/auth"
+import { trackSignup } from "@/lib/analytics"
 
 type Mode = "signin" | "signup"
 
@@ -21,6 +22,7 @@ export default function LoginPage() {
       setErrorMsg(result.error)
       setStatus("error")
     } else if (mode === "signup") {
+      trackSignup("email")
       setStatus("success")
     }
     // signin redireciona pelo server action

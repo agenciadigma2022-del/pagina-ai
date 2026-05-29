@@ -5,6 +5,7 @@ import { getUser } from "@/lib/supabase-auth"
 import { getUserSites } from "@/app/actions/sites"
 import { signOut } from "@/app/actions/auth"
 import { getUserPlan, createCheckoutSession, createPortalSession } from "@/app/actions/stripe"
+import { TrackNewUser } from "@/components/analytics/TrackNewUser"
 
 const PRO_PRICE_ID = process.env.STRIPE_PRO_PRICE_ID!
 const ANNUAL_PRICE_ID = process.env.STRIPE_ANNUAL_PRICE_ID!
@@ -27,6 +28,8 @@ export default async function DashboardPage({
 
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Dispara evento de cadastro após OAuth Google */}
+      <TrackNewUser />
       {/* Nav */}
       <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
         <Logo size="md" />
