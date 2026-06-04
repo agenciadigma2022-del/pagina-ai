@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation"
 import { createAuthClient } from "@/lib/supabase-auth"
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3004"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.empreendify.com.br"
 
 export async function signInWithPassword(formData: FormData) {
   const email = formData.get("email") as string
