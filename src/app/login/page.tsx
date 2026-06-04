@@ -163,6 +163,16 @@ function LoginForm() {
 
               {/* Formulário */}
               <form onSubmit={handleSubmit} className="space-y-3">
+                {mode === "signup" && (
+                  <input
+                    type="text"
+                    name="full_name"
+                    required
+                    autoComplete="name"
+                    placeholder="Seu nome completo"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-violet-300"
+                  />
+                )}
                 <input
                   type="email"
                   name="email"

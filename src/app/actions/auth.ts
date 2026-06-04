@@ -17,14 +17,18 @@ export async function signInWithPassword(formData: FormData) {
 }
 
 export async function signUpWithPassword(formData: FormData) {
-  const email = formData.get("email") as string
-  const password = formData.get("password") as string
-  const client = await createAuthClient()
+  const email     = formData.get("email") as string
+  const password  = formData.get("password") as string
+  const full_name = (formData.get("full_name") as string | null)?.trim() ?? ""
+  const client    = await createAuthClient()
 
   const { error } = await client.auth.signUp({
     email,
     password,
-    options: { emailRedirectTo: `${SITE_URL}/auth/callback` },
+    options: {
+      emailRedirectTo: `${SITE_URL}/auth/callback`,
+      data: { full_name },
+    },
   })
 
   if (error) return { error: error.message }
