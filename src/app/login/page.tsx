@@ -1,38 +1,79 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import { signInWithPassword, signUpWithPassword, signInWithGoogle } from "@/app/actions/auth"
 import { trackSignup } from "@/lib/analytics"
 
-type Mode = "signin" | "signup"
+type Mode   = "signin" | "signup"
+type Status = "idle" | "loading" | "success" | "error"
+
+/** Traduz mensagens técnicas do Supabase para português claro */
+function translateError(raw: string): string {
+  const msg = raw.toLowerCase()
+  if (msg.includes("invalid login credentials"))          return "E-mail ou senha incorretos."
+  if (msg.includes("email not confirmed"))                return "Confirme seu e-mail antes de entrar. Verifique sua caixa de entrada."
+  if (msg.includes("user already registered"))            return "Este e-mail já tem uma conta. Clique em \"Entrar\"."
+  if (msg.includes("password should be at least"))       return "A senha precisa ter pelo menos 6 caracteres."
+  if (msg.includes("unable to validate email"))           return "E-mail inválido. Verifique e tente novamente."
+  if (msg.includes("email rate limit"))                   return "Muitas tentativas. Aguarde alguns minutos e tente de novo."
+  if (msg.includes("signup_disabled"))                    return "Novos cadastros estão temporariamente desativados."
+  if (msg.includes("access_denied"))                      return "Acesso negado pelo Google. Tente novamente ou use e-mail e senha."
+  if (msg.includes("link_invalido"))                      return "Link inválido ou expirado. Solicite um novo acesso."
+  if (msg.includes("erro_inesperado"))                    return "Erro inesperado. Tente novamente em alguns instantes."
+  if (msg.includes("oauth") || msg.includes("provider")) return "Erro ao entrar com Google. Tente novamente."
+  return raw // fallback: mostra o erro original se não reconhecido
+}
 
 export default function LoginPage() {
-  const [mode, setMode] = useState<Mode>("signin")
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
+  )
+}
+
+function LoginForm() {
+  const searchParams = useSearchParams()
+  const [mode,     setMode]     = useState<Mode>("signin")
+  const [status,   setStatus]   = useState<Status>("idle")
   const [errorMsg, setErrorMsg] = useState("")
+
+  // Captura erros vindos do callback OAuth (?error=...)
+  useEffect(() => {
+    const urlError = searchParams.get("error")
+    if (urlError) {
+      setErrorMsg(translateError(decodeURIComponent(urlError)))
+      setStatus("error")
+      // Limpa o ?error= da URL sem recarregar
+      window.history.replaceState({}, "", "/login")
+    }
+  }, [searchParams])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus("loading")
     setErrorMsg("")
     const formData = new FormData(e.currentTarget)
-    const action = mode === "signin" ? signInWithPassword : signUpWithPassword
-    const result = await action(formData)
+    const action   = mode === "signin" ? signInWithPassword : signUpWithPassword
+    const result   = await action(formData)
+
     if (result?.error) {
-      setErrorMsg(result.error)
+      setErrorMsg(translateError(result.error))
       setStatus("error")
     } else if (mode === "signup") {
       trackSignup("email")
       setStatus("success")
     }
-    // signin redireciona pelo server action
+    // signin redireciona via server action
   }
 
   async function handleGoogle() {
     setStatus("loading")
+    setErrorMsg("")
     const result = await signInWithGoogle()
     if (result?.error) {
-      setErrorMsg(result.error)
+      setErrorMsg(translateError(result.error))
       setStatus("error")
     }
   }
@@ -58,10 +99,14 @@ export default function LoginPage() {
             <div className="text-center">
               <div className="text-4xl mb-4">📬</div>
               <h2 className="font-bold text-gray-800 text-lg mb-2">Confirme seu e-mail</h2>
-              <p className="text-gray-500 text-sm">
-                Enviamos um e-mail de confirmação. Clique no link para ativar sua conta.
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Enviamos um link de confirmação para o seu e-mail.<br />
+                <strong>Verifique também a pasta de spam.</strong>
               </p>
-              <button onClick={() => switchMode("signin")} className="mt-6 text-sm text-violet-600 hover:underline">
+              <button
+                onClick={() => switchMode("signin")}
+                className="mt-6 text-sm text-violet-600 hover:underline"
+              >
                 Já confirmei — fazer login
               </button>
             </div>
@@ -87,13 +132,25 @@ export default function LoginPage() {
                 </button>
               </div>
 
+              {/* Erro global (OAuth ou URL) */}
+              {status === "error" && errorMsg && (
+                <div className="flex items-start gap-2 bg-red-50 border border-red-100 rounded-xl px-4 py-3 mb-4">
+                  <span className="text-red-400 text-base mt-0.5">⚠</span>
+                  <p className="text-sm text-red-600 leading-snug">{errorMsg}</p>
+                </div>
+              )}
+
               {/* Google */}
               <button
                 onClick={handleGoogle}
                 disabled={status === "loading"}
                 className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-60 mb-4"
               >
-                <GoogleIcon />
+                {status === "loading" ? (
+                  <span className="w-4 h-4 border-2 border-gray-300 border-t-violet-500 rounded-full animate-spin" />
+                ) : (
+                  <GoogleIcon />
+                )}
                 Continuar com Google
               </button>
 
@@ -122,15 +179,14 @@ export default function LoginPage() {
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-violet-300"
                 />
 
-                {status === "error" && (
-                  <p className="text-sm text-red-500">{errorMsg}</p>
-                )}
-
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl text-sm transition-colors disabled:opacity-60"
+                  className="w-full py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl text-sm transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
                 >
+                  {status === "loading" && (
+                    <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  )}
                   {status === "loading"
                     ? "Aguarde..."
                     : mode === "signin"
@@ -143,7 +199,8 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-6">
-          Ao continuar, você concorda com nossos Termos de Uso.
+          Ao continuar, você concorda com nossos{" "}
+          <a href="/termos" className="underline hover:text-gray-600">Termos de Uso</a>.
         </p>
       </div>
     </div>
